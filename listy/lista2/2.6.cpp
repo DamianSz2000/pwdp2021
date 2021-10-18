@@ -3,7 +3,7 @@
 using namespace std;
 
 int main(){
-    cout<<"\x1b[43m      *      "<<endl;
+    cout<<"\x1b[93m      *      "<<endl;
     cout<<"     ***     "<<endl;
     cout<<"    *****    "<<endl;
     cout<<"*************"<<endl;

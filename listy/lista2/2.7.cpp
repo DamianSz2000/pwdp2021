@@ -6,11 +6,10 @@ using namespace std;
 
 int main(){
     ofstream wynik;
-    int x;
-    cout<<"Podaj x: ";
-    cin>>x;
     wynik.open("wynik.dat");
-    wynik<<x<<"\t"<<cos(x)<<"\t"<<pow(cos(x),2);
+    for(int x = 1; x<100; x++){
+        wynik<<x<<"\t"<<cos(x)<<"\t"<<pow(cos(x),2)<<endl;
+    }
     wynik.close();
     cout<<"Wyniki zapisane do pliku wynik.dat";
     return 0;
