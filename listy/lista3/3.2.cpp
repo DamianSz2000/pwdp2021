@@ -3,6 +3,7 @@
 using namespace std;
 
 int main(void){
+    while(1==1){
     system("CLS");
     cout<<"\x1b[93m      *      "<<endl;
     Sleep(200);
@@ -37,5 +38,6 @@ int main(void){
 	cout<<" ****   ****  "<<endl;
 	Sleep(200);
 	cout<<"***       *** \x1b[0m "<<endl;
+    }
     return 0;
 }
