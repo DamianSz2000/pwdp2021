@@ -1,4 +1,0 @@
-1.  cos(x)^2+sin(x)^2=1
-  
-   cos(x)= (e^i*x+e^-i*x)/2
-   sin(x)= sqrt(1-(e^i*x+e^-i*x)/2)
