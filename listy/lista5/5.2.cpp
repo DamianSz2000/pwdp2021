@@ -20,13 +20,34 @@ float BMI(float height, int weight){
 }
 
 string BMIprint(float bmi){
-    if(bmi > 0){
-        return "simea";
+    if(bmi < 16){
+        return "wyglodzenie";
+    }
+    if(bmi >= 16 && bmi < 17){
+        return "wychudzenie";
+    }
+    if(bmi >= 17 && bmi < 18.5){
+        return "niedowaga";
+    }
+    if(bmi >= 18.5 && bmi < 25){
+        return "pozadana masa ciala";
+    }
+    if(bmi >= 25 && bmi < 30){
+        return "nadwaga";
+    }
+    if(bmi >= 30 && bmi < 35){
+        return "otylosc 1 stopnia";
+    }
+    if(bmi >= 35 && bmi < 40){
+        return "otylosc 2 stopnia";
+    }
+    if(bmi >= 16){
+        return "otylosc 3 stopnia";
     }
 
 }
 
-int main(){;
+int main(){
     cout<<BMIprint(BMI(readHeight(),readMass()));
 
 
