@@ -44,7 +44,6 @@ string BMIprint(float bmi){
     if(bmi >= 16){
         return "otylosc 3 stopnia";
     }
-
 }
 
 int main(){

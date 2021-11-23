@@ -3,13 +3,13 @@
 #include <time.h>
 using namespace std;
 
-int guess(int x){
+int guess(int x, int y){
     srand(time(NULL));
     bool win = 0;
     bool again = 0;
     int guessnumber = 0;
     int tries = 0;
-    int number = rand() % x;
+    int number = (rand() % (x-y)+1) + y;
     while(win == 0){
         cin>>guessnumber;
         if(guessnumber == number){
@@ -36,12 +36,17 @@ int main(){
     bool again = 1;
     while(again == 1){
         int maxnumber = 0;
+        int minnumber = 0;
+        cout<<"########################################"<<endl;
+        cout<<"#Podaj minimalna liczbe do zgadniecia:#"<<endl;
+        cout<<"########################################"<<endl;
+        cin>>minnumber;
         cout<<"########################################"<<endl;
         cout<<"#Podaj maksymalna liczbe do zgadniecia:#"<<endl;
         cout<<"########################################"<<endl;
         cin>>maxnumber;
-        cout<<"Zgaduj liczbe od 0 do "<<maxnumber<<endl;
-        again = guess(maxnumber);
+        cout<<"Zgaduj liczbe od "<<minnumber"do "<<maxnumber<<endl;
+        again = guess(maxnumber, minnumber);
     }
     return 0;
 }

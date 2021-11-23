@@ -1,6 +1,7 @@
 #include <iostream>
 #include <wchar.h>
 #include <windows.h>
+#include <cmath>
 
 using namespace std;
 
