@@ -92,6 +92,35 @@ void printboard(int playergameboard[10][10], int computergameboard[10][10]){ //C
     }
 }
 
+void playersetboard(int playergameboard[10][10], int computergameboard[10][10]){
+    int ships = 0;
+    int points = 10;
+    int x, y;
+    cout<<"Masz 10 punktow do wydania na ustawienie statkow!"<<endl;
+    cout<<"Statek ustawiasz podajac najpierw wspolrzedna x a potem y"<<endl;
+    while(ships < 10){
+        cout<<"Pozostalo ci "<<points<<" statkow do rozstawienia"<<endl;
+        cout<<"Podaj x: "<<endl;
+        cin>>x;
+        cout<<"Podaj y: "<<endl;
+        cin>>y;
+        while(playergameboard[x][y] == 1){
+            cout<<"To pole jest zajete! Wybierz inne"<<endl;
+            cout<<"Podaj x: "<<endl;
+            cin>>x;
+            cout<<"Podaj y: "<<endl;
+            cin>>y;
+        }
+        ships++;
+        points--;
+        playergameboard[x][y] = 1;
+        printboard(playergameboard, computergameboard);
+    }
+    computersetboard(computergameboard);
+    cout<<"Komputer rozstawil swoje statki. Powodzenia!"<<endl;
+    Sleep(2000);
+}
+
 int main(){
     bool again = 1; //We enter loop until player wants to stop playing
     while(again == 1){
@@ -102,10 +131,8 @@ int main(){
         int taken = 1;
         int destroyed = 2;
         int checked = 3;
-        int ships = 0;
         int playerpoints = 0;
         int computerpoints = 0;
-        int points = 10;
         int x, y, xguess, yguess;
         bool chit = 0;
         bool game = 1;
@@ -122,29 +149,7 @@ int main(){
         }
         //Let player setup his field
         printboard(playergameboard, computergameboard);
-        cout<<"Masz 10 punktow do wydania na ustawienie statkow!"<<endl;
-        cout<<"Statek ustawiasz podajac najpierw wspolrzedna x a potem y"<<endl;
-        while(ships < 10){
-            cout<<"Pozostalo ci "<<points<<" statkow do rozstawienia"<<endl;
-            cout<<"Podaj x: "<<endl;
-            cin>>x;
-            cout<<"Podaj y: "<<endl;
-            cin>>y;
-            while(playergameboard[x][y] == 1){
-                cout<<"To pole jest zajete! Wybierz inne"<<endl;
-                cout<<"Podaj x: "<<endl;
-                cin>>x;
-                cout<<"Podaj y: "<<endl;
-                cin>>y;
-            }
-            ships++;
-            points--;
-            playergameboard[x][y] = taken;
-            printboard(playergameboard, computergameboard);
-        }
-        computersetboard(computergameboard);
-        cout<<"Komputer rozstawil swoje statki. Powodzenia!"<<endl;
-        Sleep(2000);
+        playersetboard(playergameboard, computergameboard);
         //Game start
         while(game == 1){
             printboard(playergameboard, computergameboard);
