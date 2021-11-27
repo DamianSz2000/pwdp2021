@@ -78,7 +78,7 @@ void printboard(int playergameboard[10][10], int computergameboard[10][10]){
                 cout<<"\x1B[48;5;220m[]\x1B[0m";
             }
             else if(computergameboard[j][i] == 1){
-                cout<<"\x1B[48;5;118m[]\x1B[0m";
+                cout<<"\x1B[48;5;220m[]\x1B[0m";
             }
             else if(computergameboard[j][i] == 2){
                 cout<<"\x1B[48;5;196m()\x1B[0m";
