@@ -4,54 +4,54 @@
 #include<ctime>
 using namespace std;
 
-void computersetboard(int computergameboard[10][10]){
-    srand(time(NULL));
-    int x, y;
+void computersetboard(int computergameboard[10][10]){ //Randomly setup computer's board
+    srand(time(NULL)); //Random gen seed
+    int x, y; //X and y coordinates of ship
     for(int i = 0; i < 10; i++){
-        x = rand() % 10;
-        y = rand() % 10;
-        if(computergameboard[x][y] == 0){
-            computergameboard[x][y] = 1;
+        x = rand() % 10; //Random integer between 0 and 9
+        y = rand() % 10; //Random integer between 0 and 9
+        if(computergameboard[x][y] == 0){ //If x,y spot is not taken
+            computergameboard[x][y] = 1; //Claim it
         }
         else{
-            while(computergameboard[x][y] == 1){
-                x = rand() % 10;
-                y = rand() % 10;
+            while(computergameboard[x][y] == 1){ //While x, y spot is taken
+                x = rand() % 10; //Generate new x
+                y = rand() % 10; //Generate new y
             }
-        computergameboard[x][y] = 1;
+        computergameboard[x][y] = 1; //Claim newly generated x, y
         }
     }
 }
 
-bool computermove(int playergameboard[10][10]){
-    int xguess, yguess;
-    bool hit = 0;
-    xguess = rand() % 10;
-    yguess = rand() % 10;
-    Sleep(2000);
-    while(playergameboard[xguess][yguess] == 3){
+bool computermove(int playergameboard[10][10]){ //Make computer move
+    int xguess, yguess; //X and y guess
+    bool hit = 0; //Set hit value to false
+    xguess = rand() % 10; //Random integer between 0 and 9
+    yguess = rand() % 10; //Random integer between 0 and 9
+    Sleep(2000); //Wait 2 seconds
+    while(playergameboard[xguess][yguess] == 3){ //Prevent computer from guessing same x, y as before
         xguess = rand() % 10;
         yguess = rand() % 10;
     }
-    if(playergameboard[xguess][yguess] == 1){
-        cout<<"Komputer trafil! x: "<<xguess<<" y:"<<yguess<<endl;
-        playergameboard[xguess][yguess] = 2;
-        hit = 1;
+    if(playergameboard[xguess][yguess] == 1){ //If x, y is taken on playergameboard
+        cout<<"Komputer trafil! x: "<<xguess<<" y:"<<yguess<<endl; //Announce hit
+        playergameboard[xguess][yguess] = 2; //Set the ship to be destroyed
+        hit = 1; //Set hit to true
         Sleep(2000);
     }
     else{
-        cout<<"Pudlo! Twoja tura."<<endl;
-        playergameboard[xguess][yguess] = 3;
+        cout<<"Pudlo! Twoja tura."<<endl; //Announce miss
+        playergameboard[xguess][yguess] = 3; //Set the x, y  spot to be already checked
         Sleep(2000);
     }
-    return hit;
+    return hit; //Return true or false if hit
 }
 
-void printboard(int playergameboard[10][10], int computergameboard[10][10]){
-    system("CLS");
+void printboard(int playergameboard[10][10], int computergameboard[10][10]){ //Cout the gameboards
+    system("CLS"); //Clear the console window
     cout<<"Twoja plansza"<<endl;
     cout<<"0 1 2 3 4 5 6 7 8 9"<<endl;
-    for(int i = 0; i < 10; i++){
+    for(int i = 0; i < 10; i++){ //Print player board
         for(int j = 0; j < 10; j++){
             if(playergameboard[j][i] == 0){
                 cout<<"\x1B[48;5;220m[]\x1B[0m";
@@ -72,7 +72,7 @@ void printboard(int playergameboard[10][10], int computergameboard[10][10]){
     cout<<endl;
     cout<<"Plansza komputera"<<endl;
     cout<<"0 1 2 3 4 5 6 7 8 9"<<endl;
-    for(int i = 0; i < 10; i++){
+    for(int i = 0; i < 10; i++){ //Print computer board
         for(int j = 0; j < 10; j++){
             if(computergameboard[j][i] == 0){
                 cout<<"\x1B[48;5;220m[]\x1B[0m";
@@ -93,7 +93,7 @@ void printboard(int playergameboard[10][10], int computergameboard[10][10]){
 }
 
 int main(){
-    int again = 1;
+    bool again = 1; //We enter loop until player wants to stop playing
     while(again == 1){
         //Variables
         int playergameboard[10][10];
@@ -109,7 +109,7 @@ int main(){
         int x, y, xguess, yguess;
         bool chit = 0;
         bool game = 1;
-        //Make gameboards ready to play
+        //Make gameboards ready to play (make all spots free)
         for(int i = 0; i < 10; i++){
             for(int j = 0; j < 10; j++){
                 playergameboard[j][i] = free;
