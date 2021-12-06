@@ -4,6 +4,22 @@
 #include<ctime>
 using namespace std;
 
+
+
+void startingscreen(){
+    system("CLS");
+    cout<<"\x1B[38;5;15m     __|_|__|_|__"<<endl;
+    Sleep(1000);
+    cout<<"\x1B[38;5;15m   _|____________|__"<<endl;
+    Sleep(1000);
+    cout<<"\x1B[38;5;15m  |o o o o o o o o /  "<<endl;
+    Sleep(1000);
+    cout<<"\x1B[38;5;39m~'`~'`~'`~'`~'`~'`~'`~\x1B[0m"<<endl;
+    Sleep(1000);
+    cout<<"\x1B[38;5;160m      S T A T K I\x1B[0m"<<endl;
+    Sleep(5000);
+}
+
 void computersetboard(int computergameboard[10][10]){ //Randomly setup computer's board
     srand(time(NULL)); //Random gen seed
     int x, y; //X and y coordinates of ship
@@ -122,6 +138,7 @@ void playersetboard(int playergameboard[10][10], int computergameboard[10][10]){
 }
 
 int main(){
+    startingscreen();
     bool again = 1; //We enter loop until player wants to stop playing
     while(again == 1){
         //Variables
